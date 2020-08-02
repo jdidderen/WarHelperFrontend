@@ -1,0 +1,51 @@
+@import "~bulma/sass/utilities/_all";
+
+$primary: #363636;
+$primary-invert: findColorInvert($primary);
+$twitter: #4099FF;
+$twitter-invert: findColorInvert($twitter);
+
+$colors: (
+        "white": ($white, $black),
+        "black": ($black, $white),
+        "light": ($light, $light-invert),
+        "dark": ($dark, $dark-invert),
+        "primary": ($primary, $primary-invert),
+        "info": ($info, $info-invert),
+        "success": ($success, $success-invert),
+        "warning": ($warning, $warning-invert),
+        "danger": ($danger, $danger-invert),
+        "twitter": ($twitter, $twitter-invert)
+);
+
+.bg-img {
+  background-image: url('assets/wallpaper.jpg');
+  background-position: center center;
+  background-repeat:  no-repeat;
+  background-attachment: fixed;
+  background-size:  cover;
+}
+
+div.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  grid-gap: 0.5em;
+  grid-auto-rows: 1fr;
+  cursor: default;
+}
+
+div.card-content, p.title, h1.title,h2.title,h3.title,h4.title,h5.title,label.label,p.subtitle,abbr,h4.title.is-3.my-text.score,th {
+  color: #fff;
+}
+
+div.card{
+  height: 100%;
+  background-color: #363636;
+  border-radius: .4rem;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
+  cursor: default;
+}
+
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
