@@ -9,6 +9,7 @@ import MatchUpdate from "@/components/match/MatchUpdate";
 import MatchDetail from "@/components/match/MatchDetail";
 import StratagemList from "@/components/stratagem/StratagemList";
 import Login from "@/components/home/Login";
+import StratagemKanban from "@/components/stratagem/StratagemKanban";
 
 Vue.use(Router);
 
@@ -77,6 +78,12 @@ const router = new Router({
             path: '/stratagem',
             name: 'stratagem-list',
             component: StratagemList,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/stratagem/kanban',
+            name: 'stratagem-kanban',
+            component: StratagemKanban,
             beforeEnter: requireAuth
         },
     ]
