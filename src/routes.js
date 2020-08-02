@@ -24,7 +24,6 @@ function requireAuth (to, from, next) {
 }
 
 const router = new Router({
-    mode: 'history',
     routes: [
         {
             path: '/',
