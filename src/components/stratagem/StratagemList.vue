@@ -28,7 +28,7 @@
                 default-sort="army">
 
             <template slot-scope="props">
-                <b-table-column field="army" label="Armée" sortable searchable>
+                <b-table-column field="army" label="Armée" sortable>
                     {{ props.row.army }}
                 </b-table-column>
 
