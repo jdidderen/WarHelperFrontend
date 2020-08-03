@@ -14,15 +14,15 @@ class MatchService {
     }
 
     create(data) {
-        return http.get('/api/match/create', {data:data})
+        return http.post('/api/match/create', {data:data})
     }
 
     update(id, data) {
-        return http.get('/api/match/update/' + id, {data: data})
+        return http.put('/api/match/update/' + id, {data: data})
     }
 
     delete(id) {
-        return http.get('/api/match/delete/' + id)
+        return http.delete('/api/match/delete/' + id)
     }
 
 }

@@ -561,6 +561,14 @@
         color: #fff !important;
     }
 
+    a.datepicker-cell.is-selectable.dots span, .datepicker-cell span {
+        color: black;
+    }
+
+    .datepicker-cell.is-unselectable span {
+        color: grey;
+    }
+
     strong {
         text-align: center;
         vertical-align: middle;
