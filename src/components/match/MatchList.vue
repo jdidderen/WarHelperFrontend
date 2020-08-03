@@ -29,7 +29,7 @@
                 :per-page="perPage"
                 :paginated="true"
                 :current-page.sync="currentPage"
-                default-sort="match.date">
+                default-sort="date">
 
             <template slot-scope="props">
                 <b-table-column field="date" label="Date" width="50" searchable sortable>
@@ -98,7 +98,7 @@
         name: "MatchList",
         data() {
             return {
-                defaultSortDirection: 'asc',
+                defaultSortDirection: 'desc',
                 sortIcon: 'arrow-up',
                 sortIconSize: 'is-small',
                 perPage: 10,

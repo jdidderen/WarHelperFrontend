@@ -10,6 +10,8 @@ import MatchDetail from "@/components/match/MatchDetail";
 import StratagemList from "@/components/stratagem/StratagemList";
 import Login from "@/components/home/Login";
 import StratagemKanban from "@/components/stratagem/StratagemKanban";
+import ObjectiveList from "@/components/objective/ObjectiveList";
+import ScenarioList from "@/components/scenario/ScenarioList";
 
 Vue.use(Router);
 
@@ -84,6 +86,18 @@ const router = new Router({
             path: '/stratagem/kanban',
             name: 'stratagem-kanban',
             component: StratagemKanban,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/objective',
+            name: 'objective-list',
+            component: ObjectiveList,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/scenario',
+            name: 'scenario-list',
+            component: ScenarioList,
             beforeEnter: requireAuth
         },
     ]

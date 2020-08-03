@@ -33,6 +33,8 @@
                             <b-menu-item icon="card-outline" label="Kanban" tag="router-link" :to="{ name: 'stratagem-kanban' }"></b-menu-item>
                         </b-menu-item>
                         <b-menu-item icon="ammunition" label="Armées" tag="router-link" :to="{ name: 'army-list' }" class="is-6"></b-menu-item>
+                        <b-menu-item icon="knife" label="Objectif" tag="router-link" :to="{ name: 'objective-list' }" class="is-6"></b-menu-item>
+                        <b-menu-item icon="clipboard-text" label="Scénarios" tag="router-link" :to="{ name: 'scenario-list' }" class="is-6"></b-menu-item>
                     </b-menu-list>
                     <b-menu-list label="Actions">
                         <b-menu-item v-if="!loggedIn" icon="login" label="Login" tag="router-link" :to="{ name: 'login' }"></b-menu-item>
