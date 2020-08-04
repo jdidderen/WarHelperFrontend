@@ -9,6 +9,10 @@ class UserService {
         return http.get(`/api/user/${id}`);
     }
 
+    getCurrentUser() {
+        return http.get(`/rest-auth/user/`);
+    }
+
 }
 
 export default new UserService();

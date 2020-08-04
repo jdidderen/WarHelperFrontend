@@ -62,6 +62,7 @@
           </div>
         </div>
       </div>
+    <router-link to="/personal-objective">
     <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.8)">
       <div class="card-image" style="background: transparent">
         <figure class="image">
@@ -76,6 +77,7 @@
         </div>
       </div>
     </div>
+    </router-link>
     </div>
 </template>
 

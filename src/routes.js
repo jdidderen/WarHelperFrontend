@@ -12,6 +12,10 @@ import Login from "@/components/home/Login";
 import StratagemKanban from "@/components/stratagem/StratagemKanban";
 import ObjectiveList from "@/components/objective/ObjectiveList";
 import ScenarioList from "@/components/scenario/ScenarioList";
+import PersonalObjectiveList from "@/components/personalObjective/PersonalObjectiveList";
+import PersonalObjectiveCreate from "@/components/personalObjective/PersonalObjectiveCreate";
+import PersonalObjectiveDetail from "@/components/personalObjective/PersonalObjectiveDetail";
+import PersonalObjectiveUpdate from "@/components/personalObjective/PersonalObjectiveUpdate";
 
 Vue.use(Router);
 
@@ -98,6 +102,30 @@ const router = new Router({
             path: '/scenario',
             name: 'scenario-list',
             component: ScenarioList,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/personal-objective',
+            name: 'personal-objective-list',
+            component: PersonalObjectiveList,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/personal-objective/create',
+            name: 'personal-objective-create',
+            component: PersonalObjectiveCreate,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/personal-objective/update/:id',
+            name: 'personal-objective-update',
+            component: PersonalObjectiveUpdate,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/personal-objective/:id',
+            name: 'personal-objective-detail',
+            component: PersonalObjectiveDetail,
             beforeEnter: requireAuth
         },
     ]
