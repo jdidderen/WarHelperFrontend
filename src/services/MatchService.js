@@ -18,7 +18,6 @@ class MatchService {
     }
 
     update(id, data) {
-        return http.put('/api/match/update/' + id, {data: data})
         return http.put('/api/match/update/' + id, data)
     }
 
