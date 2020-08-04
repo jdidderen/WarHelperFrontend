@@ -12,7 +12,7 @@ const http = axios.create({
 http.interceptors.request.use(config => {
     if (localStorage.getItem("token") != null)
         config.headers["Authorization"] = "Token " + localStorage.getItem("token");
-        config.headers["content-type"] = "application/json";
+        config.headers["Content-Type"] = "application/json";
     return config;
 });
 

@@ -14,11 +14,12 @@ class MatchService {
     }
 
     create(data) {
-        return http.post('/api/match/create', {data:data})
+        return http.post('/api/match/create', data)
     }
 
     update(id, data) {
         return http.put('/api/match/update/' + id, {data: data})
+        return http.put('/api/match/update/' + id, data)
     }
 
     delete(id) {

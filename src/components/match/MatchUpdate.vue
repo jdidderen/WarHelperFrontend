@@ -9,13 +9,11 @@
                             <p class="subtitle">Informations</p>
                             <b-field label="Joueur">
                                 <b-select v-model="match.player1_id" placeholder="Choisir le joueur" expanded>
-                                    <option selected></option>
                                     <option v-for="(player,index) in player_ids" :key="index" :value="player.id">{{player.username}}</option>
                                 </b-select>
                             </b-field>
                             <b-field label="Armée">
                                 <b-select v-model="match.army_p1_id" placeholder="Choisir l'armée" expanded>
-                                    <option selected></option>
                                     <option v-for="(army,index) in army_ids" :key="index" :value="army.id">{{army.name}}</option>
                                 </b-select>
                             </b-field>
@@ -29,34 +27,31 @@
                             <b-field grouped>
                                 <b-field label="Obj. secondaire 1" expanded>
                                     <b-select v-model="match.objective1_p1_id" placeholder="Choisir l'objectif" expanded>
-                                        <option selected></option>
                                         <option v-for="(objective, index) in objective_ids" :key="index" :value="objective.id">{{objective.name}}</option>
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective1_p1_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(1,1)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(1,1)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <b-field grouped>
                                 <b-field label="Obj. secondaire 2" expanded>
                                     <b-select v-model="match.objective2_p1_id" placeholder="Choisir l'objectif" expanded>
-                                        <option selected></option>
                                         <option v-for="(objective, index) in objective_ids" :key="index" :value="objective.id">{{objective.name}}</option>
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective2_p1_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(2,1)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(2,1)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <b-field grouped>
                                 <b-field label="Obj. secondaire 3" expanded>
                                     <b-select v-model="match.objective3_p1_id" placeholder="Choisir l'objectif" expanded>
-                                        <option selected></option>
                                         <option v-for="(objective, index) in objective_ids" :key="index" :value="objective.id">{{objective.name}}</option>
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective3_p1_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(3,1)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(3,1)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
 
@@ -68,13 +63,11 @@
                             <p class="subtitle">Informations</p>
                             <b-field label="Joueur">
                                 <b-select v-model="match.player2_id" placeholder="Choisir le joueur" expanded>
-                                    <option selected></option>
                                     <option v-for="(player,index) in player_ids" :key="index" :value="player.id">{{player.username}}</option>
                                 </b-select>
                             </b-field>
                             <b-field label="Armée">
                                 <b-select v-model="match.army_p2_id" placeholder="Choisir l'armée" expanded>
-                                    <option selected></option>
                                     <option v-for="(army,index) in army_ids" :key="index" :value="army.id">{{army.name}}</option>
                                 </b-select>
                             </b-field>
@@ -88,34 +81,31 @@
                             <b-field grouped>
                                 <b-field label="Obj. secondaire 1" expanded>
                                     <b-select v-model="match.objective1_p2_id" placeholder="Choisir l'objectif" expanded>
-                                        <option selected></option>
                                         <option v-for="(objective, index) in objective_ids" :key="index" :value="objective.id">{{objective.name}}</option>
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective1_p2_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(1,2)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(1,2)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <b-field grouped>
                                 <b-field label="Obj. secondaire 2" expanded>
                                     <b-select v-model="match.objective2_p2_id" placeholder="Choisir l'objectif" expanded>
-                                        <option selected></option>
                                         <option v-for="(objective, index) in objective_ids" :key="index" :value="objective.id">{{objective.name}}</option>
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective2_p2_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(2,2)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(2,2)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <b-field grouped>
                                 <b-field label="Obj. secondaire 3" expanded>
                                     <b-select v-model="match.objective3_p2_id" placeholder="Choisir l'objectif" expanded>
-                                        <option selected></option>
                                         <option v-for="(objective, index) in objective_ids" :key="index" :value="objective.id">{{objective.name}}</option>
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective3_p2_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(3,2)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(3,2)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                         </article>
@@ -141,12 +131,11 @@
                             <b-field grouped>
                                 <b-field label="Scenario" expanded>
                                     <b-select v-model="match.scenario_id" placeholder="Choisir le scénario" expanded>
-                                        <option selected></option>
                                         <option v-for="scenario in scenario_ids" :key="scenario.id" :value="scenario.id">{{scenario.name + ' | ' + scenario.type_id.point_limit}}</option>
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.scenario_id" label="Voir">
-                                    <b-button @click="openScenarioModal()"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openScenarioModal()"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <p class="title">Score</p>
@@ -326,11 +315,12 @@
         name: "MatchUpdate",
         data() {
             return {
+                player1Selected: 0,
                 player_ids: [],
                 army_ids: [],
                 scenario_ids: [],
                 objective_ids: [],
-                match: {},
+                match: {'player1_id':null,},
             };
         },
         computed: {
@@ -447,7 +437,9 @@
             retrieveMatch(id) {
                 MatchService.get(id)
                     .then(response => {
+                        console.log(response.data);
                         this.match = response.data;
+                        this.player1Selected = response.player1_id;
                     })
                     .catch(e => {
                         console.log(e);
@@ -492,6 +484,7 @@
             saveMatch() {
                 this.match.score_p1 = this.scoreP1;
                 this.match.score_p2 = this.scoreP2;
+                console.log(this.match);
                 MatchService.update(this.$route.params.id,this.match)
                     .catch(e => {
                         console.log(e);
@@ -512,22 +505,22 @@
             openObjectiveModal(number,player) {
                 let id = 0;
                 if (number === 1 && player === 1) {
-                    id = this.match.objective1_p1_id
+                    id = this.match.objective1_p1_id_id
                 }
                 if (number === 2 && player === 1) {
-                    id = this.match.objective2_p1_id
+                    id = this.match.objective2_p1_id_id
                 }
                 if (number === 3 && player === 1) {
-                    id = this.match.objective3_p1_id
+                    id = this.match.objective3_p1_id_id
                 }
                 if (number === 1 && player === 2) {
-                    id = this.match.objective1_p2_id
+                    id = this.match.objective1_p2_id_id
                 }
                 if (number === 2 && player === 2) {
-                    id = this.match.objective2_p2_id
+                    id = this.match.objective2_p2_id_id
                 }
                 if (number === 3 && player === 2) {
-                    id = this.match.objective3_p2_id
+                    id = this.match.objective3_p2_id_id
                 }
                 this.$buefy.modal.open({
                     parent: this,

@@ -34,7 +34,7 @@
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective1_p1_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(1,1)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(1,1)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <b-field grouped>
@@ -45,7 +45,7 @@
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective2_p1_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(2,1)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(2,1)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <b-field grouped>
@@ -56,7 +56,7 @@
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective3_p1_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(3,1)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(3,1)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
 
@@ -93,7 +93,7 @@
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective1_p2_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(1,2)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(1,2)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <b-field grouped>
@@ -104,7 +104,7 @@
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective2_p2_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(2,2)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(2,2)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <b-field grouped>
@@ -115,7 +115,7 @@
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.objective3_p2_id" label="Voir">
-                                    <b-button @click="openObjectiveModal(3,2)"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openObjectiveModal(3,2)"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                         </article>
@@ -146,7 +146,7 @@
                                     </b-select>
                                 </b-field>
                                 <b-field v-if="match.scenario_id" label="Voir">
-                                    <b-button @click="openScenarioModal()"><b-icon icon="eye"></b-icon></b-button>
+                                    <b-button type="is-primary" @click="openScenarioModal()"><b-icon icon="eye"></b-icon></b-button>
                                 </b-field>
                             </b-field>
                             <p class="title">Score</p>
