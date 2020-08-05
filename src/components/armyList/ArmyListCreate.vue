@@ -14,6 +14,12 @@
                             <option value="bsc">Battlescribe</option>
                         </b-select>
                     </b-field>
+                    <p v-if="army_list.type === 'bsc'">
+                        <span class="has-text-danger">Si vous utilisez Battlescribe, il faut copier votre liste au format <strong class="has-text-danger">HTML</strong>. <a target="_blank" href="https://drive.google.com/file/d/1dhFfgxQX9-nkxfd9FAnuoRfhTrw0gFzQ/view?usp=sharing">Voir exemple</a></span>
+                    </p>
+                    <p v-if="army_list.type === 'aln'">
+                        <span class="has-text-danger">Si vous utilisez ALN, il faut copier votre liste au format <strong class="has-text-danger">BBcode</strong>. <a target="_blank" href="https://drive.google.com/file/d/1Eco-G2fDpUUmBjSBQoD7dF_lco7xyKBX/view?usp=sharing">Voir exemple</a></span>
+                    </p>
                     <b-field label="Armée">
                         <b-select v-model="army_list.army_id" placeholder="Choisir l'armée" expanded>
                             <option selected></option>
