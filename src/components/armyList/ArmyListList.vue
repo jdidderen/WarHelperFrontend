@@ -41,9 +41,6 @@
                 <b-table-column field="army" label="Armée" searchable>
                     {{ props.row.army }}
                 </b-table-column>
-                <b-table-column field="shortDescription" label="Description courte" searchable>
-                    {{ props.row.shortDescription }}
-                </b-table-column>
 
                 <b-table-column field="id" label="Action">
                     <section>

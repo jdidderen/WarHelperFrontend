@@ -24,9 +24,6 @@
                             <option v-for="(army,index) in army_ids" :key="index" :value="army.id">{{army.name}}</option>
                         </b-select>
                     </b-field>
-                    <b-field label="Description courte">
-                        <b-input v-model="army_list.shortDescription" type="textarea"></b-input>
-                    </b-field>
                     <b-field label="Liste">
                         <b-input v-model="army_list.description" type="textarea"></b-input>
                     </b-field>

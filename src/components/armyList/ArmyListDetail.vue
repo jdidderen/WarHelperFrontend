@@ -19,9 +19,6 @@
                     <b-field label="Armée">
                         <b-input v-model="army_list.army" readonly></b-input>
                     </b-field>
-                    <b-field label="Description courte">
-                        <b-input v-model="army_list.shortDescription" type="textarea" disabled></b-input>
-                    </b-field>
                     <b-field label="Liste">
                         <div v-html="army_list.descriptionHTML"></div>
                     </b-field>
