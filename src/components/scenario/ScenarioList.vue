@@ -41,7 +41,7 @@
                 <b-table-column field="id" label="Action">
                     <section>
                         <div class="buttons">
-                            <b-button @click="openScenarioModal(props.row.id)"><b-icon icon="eye"></b-icon></b-button>
+                            <b-button type="is-primary" @click="openScenarioModal(props.row.id)"><b-icon icon="eye"></b-icon></b-button>
                         </div>
                     </section>
                 </b-table-column>

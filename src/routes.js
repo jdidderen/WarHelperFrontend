@@ -16,6 +16,10 @@ import PersonalObjectiveList from "@/components/personalObjective/PersonalObject
 import PersonalObjectiveCreate from "@/components/personalObjective/PersonalObjectiveCreate";
 import PersonalObjectiveDetail from "@/components/personalObjective/PersonalObjectiveDetail";
 import PersonalObjectiveUpdate from "@/components/personalObjective/PersonalObjectiveUpdate";
+import ArmyListList from "@/components/armyList/ArmyListList";
+import ArmyListCreate from "@/components/armyList/ArmyListCreate";
+import ArmyListUpdate from "@/components/armyList/ArmyListUpdate";
+import ArmyListDetail from "@/components/armyList/ArmyListDetail";
 
 Vue.use(Router);
 
@@ -126,6 +130,30 @@ const router = new Router({
             path: '/personal-objective/:id',
             name: 'personal-objective-detail',
             component: PersonalObjectiveDetail,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/army-list',
+            name: 'army-list-list',
+            component: ArmyListList,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/army-list/create',
+            name: 'army-list-create',
+            component: ArmyListCreate,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/army-list/update/:id',
+            name: 'army-list-update',
+            component: ArmyListUpdate,
+            beforeEnter: requireAuth
+        },
+        {
+            path: '/army-list/:id',
+            name: 'army-list-detail',
+            component: ArmyListDetail,
             beforeEnter: requireAuth
         },
     ]
