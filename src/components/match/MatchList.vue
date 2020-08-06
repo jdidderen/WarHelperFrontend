@@ -13,6 +13,14 @@
                     </b-select>
                 </b-field>
             </div>
+            <div class="column is-4">
+                <div class="tags">
+                    <span class="tag" v-on:click="selectFilter('none')" :class="{ 'is-success': filterSelected === 'none'}">Aucun</span>
+                    <span class="tag" v-on:click="selectFilter('mine')" :class="{ 'is-success': filterSelected === 'mine'}">Mes parties</span>
+                    <span class="tag" v-on:click="selectFilter('mine_won')" :class="{ 'is-success': filterSelected === 'mine_won'}">Mes parties gagnantes</span>
+                    <span class="tag" v-on:click="selectFilter('mine_lost')" :class="{ 'is-success': filterSelected === 'mine_lost'}">Mes parties perdantes</span>
+                </div>
+            </div>
             <div class="column is-1">
                 <b-button tag="router-link"
                           to="/match/create"
@@ -22,7 +30,7 @@
             </div>
         </div>
         <b-table
-                :data="matches"
+                :data="filteredMatches"
                 :default-sort-direction="defaultSortDirection"
                 :sort-icon="sortIcon"
                 :sort-icon-size="sortIconSize"
@@ -93,18 +101,37 @@
 
 <script>
     import MatchService from "../../services/MatchService";
+    import UserService from "@/services/UserService";
 
     export default {
         name: "MatchList",
         data() {
             return {
+                currentUserId: 0,
                 defaultSortDirection: 'desc',
                 sortIcon: 'arrow-up',
                 sortIconSize: 'is-small',
                 perPage: 10,
                 currentPage: 1,
+                filterSelected: 'none',
                 matches: [],
             };
+        },
+        computed: {
+            filteredMatches() {
+                if (this.filterSelected === 'none') {
+                    return this.matches;
+                }
+                let matches = []
+                matches = this.matches.filter((match) => match.player1_id === this.currentUserId || match.player2_id === this.currentUserId);
+                if (this.filterSelected === 'mine_won') {
+                    matches = matches.filter((match) => (match.player1_id === this.currentUserId && match.score_p1 >= match.score_p2) || (match.player2_id === this.currentUserId && match.score_p2 >= match.score_p1))
+                }
+                if (this.filterSelected === 'mine_lost') {
+                    matches = matches.filter((match) => (match.player1_id === this.currentUserId && match.score_p1 <= match.score_p2) || (match.player2_id === this.currentUserId && match.score_p2 <= match.score_p1))
+                }
+                return matches;
+            }
         },
         methods: {
             retrieveMatches() {
@@ -120,9 +147,27 @@
             refreshList() {
                 this.retrieveMatches();
             },
+            getCurrentUser() {
+                UserService.getCurrentUser()
+                    .then(response => {
+                        this.currentUserId = response.data.pk;
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+            },
+            selectFilter(filterType) {
+                if (filterType === this.filterSelected) {
+                    this.filterSelected = 'none';
+                }
+                else {
+                    this.filterSelected = filterType;
+                }
+            }
         },
         mounted() {
             this.retrieveMatches();
+            this.getCurrentUser();
         }
     }
 </script>
