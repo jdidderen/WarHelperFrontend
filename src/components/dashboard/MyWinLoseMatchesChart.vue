@@ -69,7 +69,10 @@
                         this.retrieveMatches(response.data.pk);
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             retrieveMatches(user_id) {
@@ -79,7 +82,10 @@
                         this.chartdata = this.FilterMatches(response.data,user_id)
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             retrieveUsers() {
@@ -88,7 +94,10 @@
                         this.player_ids = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             FilterMatches(matches,user_id) {

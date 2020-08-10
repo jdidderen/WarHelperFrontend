@@ -59,7 +59,10 @@
                         this.army_ids = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             getCurrentUser() {
@@ -68,7 +71,10 @@
                         this.currentUserId = response.data.pk;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             createArmyList() {
@@ -76,10 +82,19 @@
                 ArmyListService.create(this.army_list)
                     .then(response => {
                         this.army_list.id = response.data.id;
+                        if (response.status === 201) {
+                            this.$buefy.notification.open({
+                                message: "La liste a été créée avec succès !",
+                                type: 'is-success'
+                            })
+                        }
                         this.$router.push({ name: 'army-list-list'})
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
         },

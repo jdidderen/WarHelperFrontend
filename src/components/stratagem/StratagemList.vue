@@ -86,7 +86,10 @@
                         this.stratagems = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             retrieveArmies() {
@@ -95,7 +98,10 @@
                         this.armies = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             selectArmy: function (id) {

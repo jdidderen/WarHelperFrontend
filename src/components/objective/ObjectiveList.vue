@@ -69,7 +69,10 @@
                         this.objectives = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
 

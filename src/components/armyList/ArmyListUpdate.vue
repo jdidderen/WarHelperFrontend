@@ -45,9 +45,6 @@
             return {
                 army_ids: [],
                 army_list: {},
-                editorOption: {
-                    // Some Quill options...
-                }
             };
         },
         methods: {
@@ -57,7 +54,10 @@
                         this.army_list = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             retrieveArmies() {
@@ -66,7 +66,10 @@
                         this.army_ids = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             getCurrentUser() {
@@ -75,16 +78,28 @@
                         this.currentUserId = response.data.pk;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             updateArmyList() {
                 ArmyListService.update(this.army_list.id,this.army_list)
-                    .then(() => {
+                    .then(response => {
+                        if (response.status === 200) {
+                            this.$buefy.notification.open({
+                                message: "La liste a été mise à jour avec succès !",
+                                type: 'is-success'
+                            })
+                        }
                         this.$router.push({ name: 'army-list-list'})
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
         },

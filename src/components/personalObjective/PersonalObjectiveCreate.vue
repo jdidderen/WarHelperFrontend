@@ -43,20 +43,31 @@
                 PersonalObjectiveService.create(this.personal_objective)
                     .then(response => {
                         this.personal_objective.id = response.data.id;
+                        if (response.status === 201) {
+                            this.$buefy.notification.open({
+                                message: "L'objectif personnel a été créé avec succès !",
+                                type: 'is-success'
+                            })
+                        }
                         this.$router.push({ name: 'personal-objective-list'})
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             getCurrentUser() {
                 UserService.getCurrentUser()
                     .then(response => {
-                        console.log(response);
                         this.currentUserId = response.data.pk;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             }
         },

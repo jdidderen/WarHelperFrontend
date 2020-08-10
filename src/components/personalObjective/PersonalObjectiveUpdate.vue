@@ -42,17 +42,29 @@
                         this.personal_objective = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             savePersonalObjective() {
                 PersonalObjectiveService.update(this.$route.params.id,this.personal_objective)
-                    .then(() => {
+                    .then(response => {
+                            if (response.status === 200) {
+                                this.$buefy.notification.open({
+                                    message: "L'objectif personnel a été mise à jour avec succès !",
+                                    type: 'is-success'
+                                })
+                            }
                         this.$router.push({ name: 'personal-objective-list'});
                     }
                     )
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
         },
