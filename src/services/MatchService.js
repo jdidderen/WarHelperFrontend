@@ -9,6 +9,10 @@ class MatchService {
         return http.get('/api/match/lastfive')
     }
 
+    my(id) {
+        return http.get('/api/match/my/' + id)
+    }
+
     get(id) {
         return http.get('/api/match/' + id)
     }

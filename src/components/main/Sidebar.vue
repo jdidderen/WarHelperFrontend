@@ -16,6 +16,7 @@
                 <b-menu>
                     <b-menu-list label="Menu">
                         <b-menu-item icon="home" label="Accueil" tag="router-link" :to="{ name: 'home' }" class="is-6"></b-menu-item>
+                        <b-menu-item icon="head-cog" label="Mon profil" tag="router-link" :to="{ name: 'MyProfile' }" class="is-6"></b-menu-item>
                         <b-menu-item icon="checkerboard">
                             <template slot="label" slot-scope="props">
                                 <span>Parties</span>

@@ -66,7 +66,7 @@
                     <div class="content">
                         <p class="title">Informations sur la partie</p>
                         <div class="content">
-                            <b-field label="Select a date">
+                            <b-field label="Sélectionner une date">
                                 <b-datepicker
                                         placeholder="Type or select a date..."
                                         icon="calendar-today"
@@ -98,7 +98,7 @@
         <div class="tile is-ancestor">
             <div class="tile is-parent">
                 <article class="tile is-child table-content">
-                    <p class="title">Battlerounds - Player 1</p>
+                    <p class="title">Round de bataille - Joueur 1</p>
                     <table class="table">
                         <thead>
                         <tr>
@@ -106,10 +106,10 @@
                             <th><abbr title="Secondary 1">Sec 1</abbr></th>
                             <th><abbr title="Secondary 2">Sec 2</abbr></th>
                             <th><abbr title="Secondary 3">Sec 3</abbr></th>
-                            <th><abbr title="Others">Oth</abbr></th>
+                            <th><abbr title="Autres">Autr.</abbr></th>
                             <th><abbr title="Total">Total</abbr></th>
-                            <th><abbr title="CP used">CP used</abbr></th>
-                            <th><abbr title="CP left">CP left</abbr></th>
+                            <th><abbr title="CP utilisés">CP util.</abbr></th>
+                            <th><abbr title="CP restants">CP rest.</abbr></th>
                         </tr>
                         </thead>
                         <tbody v-if="match && match.line_ids">
@@ -128,7 +128,7 @@
                     </table>
                 </article>
                 <article class="tile is-child table-content">
-                    <p class="title">Battlerounds - Player 2</p>
+                    <p class="title">Round de bataille - Joueur  2</p>
                     <table class="table">
                         <thead>
                         <tr>
@@ -136,10 +136,10 @@
                             <th><abbr title="Secondary 1">Sec 1</abbr></th>
                             <th><abbr title="Secondary 2">Sec 2</abbr></th>
                             <th><abbr title="Secondary 3">Sec 3</abbr></th>
-                            <th><abbr title="Others">Oth</abbr></th>
+                            <th><abbr title="Autres">Autr.</abbr></th>
                             <th><abbr title="Total">Total</abbr></th>
-                            <th><abbr title="CP used">CP used</abbr></th>
-                            <th><abbr title="CP used">CP left</abbr></th>
+                            <th><abbr title="CP utilisés">CP util.</abbr></th>
+                            <th><abbr title="CP restants">CP rest.</abbr></th>
                         </tr>
                         </thead>
                         <tbody v-if="match && match.line_ids">
@@ -245,7 +245,10 @@
                         this.match = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
         },

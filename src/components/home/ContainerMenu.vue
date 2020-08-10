@@ -4,13 +4,13 @@
       <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.8)">
         <div class="card-image" style="background: transparent">
           <figure class="image">
-            <img src="../../assets/home/ork.jpg" alt="Armies">
+            <img src="../../assets/home/ork.jpg" alt="Armées">
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">Armies</p>
+              <p class="title is-4">Armées</p>
             </div>
           </div>
         </div>
@@ -20,13 +20,13 @@
       <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.8)">
         <div class="card-image" style="background: transparent">
           <figure class="image">
-            <img src="../../assets/home/necron.jpg" alt="Stratagems">
+            <img src="../../assets/home/necron.jpg" alt="Stratagèmes">
           </figure>
         </div>
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">Stratagems</p>
+              <p class="title is-4">Stratagèmes</p>
             </div>
           </div>
         </div>
@@ -36,18 +36,35 @@
     <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.8)">
       <div class="card-image" style="background: transparent">
         <figure class="image">
-          <img src="../../assets/home/blood.jpg" alt="Matchs">
+          <img src="../../assets/home/blood.jpg" alt="Parties">
         </figure>
       </div>
       <div class="card-content">
         <div class="media">
           <div class="media-content">
-            <p class="title is-4">Matchs</p>
+            <p class="title is-4">Parties</p>
           </div>
         </div>
       </div>
     </div>
     </router-link>
+    <router-link to="/personal-objective">
+    <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.8)">
+      <div class="card-image" style="background: transparent">
+        <figure class="image">
+          <img src="../../assets/home/marine.jpg" alt="Objectifs personnels">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">Objectifs persos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </router-link>
+    <router-link to="/my/profile">
       <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.8)">
         <div class="card-image" style="background: transparent">
           <figure class="image">
@@ -57,26 +74,11 @@
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">Match Requests</p>
+              <p class="title is-4">Mon profil</p>
             </div>
           </div>
         </div>
       </div>
-    <router-link to="/personal-objective">
-    <div class="card" style="box-shadow: 0 5px 10px rgba(0,0,0,.8)">
-      <div class="card-image" style="background: transparent">
-        <figure class="image">
-          <img src="../../assets/home/marine.jpg" alt="Personal objectives">
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-            <p class="title is-4">Personal objectives</p>
-          </div>
-        </div>
-      </div>
-    </div>
     </router-link>
     </div>
 </template>

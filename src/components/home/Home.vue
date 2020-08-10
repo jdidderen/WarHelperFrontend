@@ -1,7 +1,7 @@
 <template>
     <div>
         <ContainerMenu/>
-        <h1 class="title">Last 5 matches</h1>
+        <h1 class="title">Les 5 dernières parties</h1>
         <LastMatches/>
     </div>
 </template>

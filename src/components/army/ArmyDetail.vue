@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="title is-1">{{army.name}}</h1>
-        <h2 class="title is-2">Stratagems</h2>
+        <h2 class="title is-2">Stratagèmes</h2>
         <div class="cards">
             <div class="card" v-for="(stratagem,index_stratagem) in army.stratagem_ids" :key="index_stratagem">
                 <header class="card-header">

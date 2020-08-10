@@ -5,7 +5,7 @@
                 :default-sort-direction="defaultSortDirection"
                 :sort-icon="sortIcon"
                 :sort-icon-size="sortIconSize"
-                default-sort="match.date">
+                default-sort="date">
 
             <template slot-scope="props">
                 <b-table-column field="date" label="Date" width="40" sortable>
@@ -16,7 +16,7 @@
                     {{ props.row.player1 }}
                 </b-table-column>
 
-                <b-table-column field="army1" label="Army 1">
+                <b-table-column field="army1" label="Armée 1">
                     {{ props.row.army1 }}
                 </b-table-column>
 
@@ -24,7 +24,7 @@
                     {{ props.row.player2 }}
                 </b-table-column>
 
-                <b-table-column field="army2" label="Army 2">
+                <b-table-column field="army2" label="Armée 2">
                     {{ props.row.army2 }}
                 </b-table-column>
 
@@ -61,7 +61,7 @@
         name: "LastMatches",
         data() {
             return {
-                defaultSortDirection: 'asc',
+                defaultSortDirection: 'desc',
                 sortIcon: 'arrow-up',
                 sortIconSize: 'is-small',
                 matches: [],

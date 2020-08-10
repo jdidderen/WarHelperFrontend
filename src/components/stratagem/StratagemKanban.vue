@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 class="title is-2">Stratagems</h2>
+        <h2 class="title is-2">Stratagèmes</h2>
         <h4 class="title is-4">Armies</h4>
         <div class="tags">
             <span v-for="army in armies" v-bind:key="army.id"  v-on:click="selectArmy(army.id)" :class="{ 'is-success': activeArmyIds.includes(army.id)}" class="tag">{{army.name}}</span>

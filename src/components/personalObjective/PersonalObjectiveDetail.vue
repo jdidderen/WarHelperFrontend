@@ -4,7 +4,7 @@
             <div class="tile is-vertical is-parent">
                 <article class="tile is-child tile-content">
                     <h2 class="title is-2">Objectif personnel</h2>
-                    <b-field label="Select a date">
+                    <b-field label="Sélectionner une date">
                         <b-datepicker
                                 placeholder="Type or select a date..."
                                 icon="calendar-today"
@@ -15,7 +15,7 @@
                     <b-field label="Joueur">
                         <b-input v-model="personal_objective.player" readonly></b-input>
                     </b-field>
-                    <b-field label="Name">
+                    <b-field label="Nom">
                         <b-input v-model="personal_objective.name" readonly></b-input>
                     </b-field>
                     <b-field label="Description">

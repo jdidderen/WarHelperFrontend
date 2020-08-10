@@ -117,7 +117,7 @@
                     <div class="content">
                         <p class="title">Informations sur la partie</p>
                         <div class="content">
-                            <b-field label="Select a date">
+                            <b-field label="Sélectionner une date">
                                 <b-datepicker
                                         placeholder="Type or select a date..."
                                         icon="calendar-today"
@@ -172,7 +172,7 @@
         <div class="tile is-ancestor" v-if="match.score_no_details !== true">
             <div class="tile is-vertical is-6 is-parent">
                 <article class="tile is-child tile-content">
-                    <p class="title">Battlerounds - Player 1</p>
+                    <p class="title">Round de bataille - Joueur 1</p>
                     <table class="table">
                         <thead>
                         <tr>
@@ -180,10 +180,10 @@
                             <th><abbr title="Secondary 1">Sec 1</abbr></th>
                             <th><abbr title="Secondary 2">Sec 2</abbr></th>
                             <th><abbr title="Secondary 3">Sec 3</abbr></th>
-                            <th><abbr title="Others">Oth</abbr></th>
+                            <th><abbr title="Autres">Autr.</abbr></th>
                             <th><abbr title="Total">Total</abbr></th>
-                            <th><abbr title="CP used">CP used</abbr></th>
-                            <th><abbr title="CP left">CP left</abbr></th>
+                            <th><abbr title="CP utilisés">CP util.</abbr></th>
+                            <th><abbr title="CP restants">CP rest.</abbr></th>
                         </tr>
                         </thead>
                         <tbody v-if="match && match.line_ids">
@@ -236,7 +236,7 @@
             </div>
             <div class="tile is-vertical is-6 is-parent">
                 <article class="tile is-child tile-content">
-                        <p class="title">Battlerounds - Player 2</p>
+                        <p class="title">Round de bataille - Joueur  2</p>
                         <table class="table">
                             <thead>
                             <tr>
@@ -244,10 +244,10 @@
                                 <th><abbr title="Secondary 1">Sec 1</abbr></th>
                                 <th><abbr title="Secondary 2">Sec 2</abbr></th>
                                 <th><abbr title="Secondary 3">Sec 3</abbr></th>
-                                <th><abbr title="Others">Oth</abbr></th>
+                                <th><abbr title="Autres">Autr.</abbr></th>
                                 <th><abbr title="Total">Total</abbr></th>
-                                <th><abbr title="CP used">CP used</abbr></th>
-                                <th><abbr title="CP used">CP left</abbr></th>
+                                <th><abbr title="CP utilisés">CP util.</abbr></th>
+                                <th><abbr title="CP restants">CP rest.</abbr></th>
                             </tr>
                             </thead>
                             <tbody v-if="match && match.line_ids">
@@ -320,7 +320,7 @@
                 army_ids: [],
                 scenario_ids: [],
                 objective_ids: [],
-                match: {'player1_id':null,},
+                match: {'player1_id':null,'location':''},
             };
         },
         computed: {
@@ -442,7 +442,10 @@
                         this.player1Selected = response.player1_id;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             retrieveArmies() {
@@ -451,7 +454,10 @@
                         this.army_ids = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             retrieveUsers() {
@@ -460,7 +466,10 @@
                         this.player_ids = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             retrieveObjectives() {
@@ -469,7 +478,10 @@
                         this.objective_ids = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             retrieveScenarios() {
@@ -478,16 +490,29 @@
                         this.scenario_ids = response.data;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             saveMatch() {
                 this.match.score_p1 = this.scoreP1;
                 this.match.score_p2 = this.scoreP2;
-                console.log(this.match);
                 MatchService.update(this.$route.params.id,this.match)
+                    .then(response => {
+                        if (response.status === 200) {
+                            this.$buefy.notification.open({
+                                message: "La partie a été mise à jour" ,
+                                type: 'is-success'
+                            })
+                        }
+                    })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             openScenarioModal() {
@@ -540,7 +565,7 @@
             this.retrieveObjectives();
             this.retrieveScenarios();
             this.retrieveUsers();
-        }
+        },
     }
 </script>
 

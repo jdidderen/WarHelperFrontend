@@ -29,9 +29,7 @@ const store = new Vuex.Store({
                 state.status = { loggedIn: true, loggingIn: false };
                 state.token = token.key;
                 let expiration = moment().add(30, 'days').format("MM-DD-YYYY");
-                console.log(expiration);
                 state.expiration = expiration;
-                console.log(localStorage.getItem('expiration'));
             }
         },
         stillLogged(state) {
@@ -50,7 +48,6 @@ const store = new Vuex.Store({
             state.status = { loggedIn: false, loggingIn: false };
             state.token = '';
             state.expiration = '';
-            console.log(localStorage)
         },
     },
     actions: {
@@ -72,9 +69,9 @@ const store = new Vuex.Store({
         },
         recreateState({ commit }) {
             if (localStorage.getItem('token') && localStorage.getItem('expiration')) {
-                let date = localStorage.getItem('expiration');
-                date = new Date(date);
-                console.log(date);
+                // let date = localStorage.getItem('expiration');
+                // date = new Date(date);
+                // console.log(date);
                 commit('stillLogged')
             }
         }

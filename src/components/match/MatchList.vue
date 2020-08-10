@@ -50,7 +50,7 @@
                     {{ props.row.player1 }}
                 </b-table-column>
 
-                <b-table-column field="army1" label="Army 1" searchable>
+                <b-table-column field="army1" label="Armée 1" searchable>
                     {{ props.row.army1 }}
                 </b-table-column>
 
@@ -58,7 +58,7 @@
                     {{ props.row.player2 }}
                 </b-table-column>
 
-                <b-table-column field="army2" label="Army 2" searchable>
+                <b-table-column field="army2" label="Armée 2" searchable>
                     {{ props.row.army2 }}
                 </b-table-column>
 
@@ -91,6 +91,7 @@
                                       type="is-info">
                                 Mettre à jour
                             </b-button>
+                            <b-button type="is-danger" icon-left="trash-can" @click="DeleteMatch(props.row)">Supprimer</b-button>
                         </div>
                     </section>
                 </b-table-column>
@@ -102,6 +103,7 @@
 <script>
     import MatchService from "../../services/MatchService";
     import UserService from "@/services/UserService";
+    import ConfirmModal from "@/components/modals/ConfirmModal";
 
     export default {
         name: "MatchList",
@@ -115,29 +117,15 @@
                 currentPage: 1,
                 filterSelected: 'none',
                 matches: [],
+                filteredMatches: [],
             };
-        },
-        computed: {
-            filteredMatches() {
-                if (this.filterSelected === 'none') {
-                    return this.matches;
-                }
-                let matches = []
-                matches = this.matches.filter((match) => match.player1_id === this.currentUserId || match.player2_id === this.currentUserId);
-                if (this.filterSelected === 'mine_won') {
-                    matches = matches.filter((match) => (match.player1_id === this.currentUserId && match.score_p1 >= match.score_p2) || (match.player2_id === this.currentUserId && match.score_p2 >= match.score_p1))
-                }
-                if (this.filterSelected === 'mine_lost') {
-                    matches = matches.filter((match) => (match.player1_id === this.currentUserId && match.score_p1 <= match.score_p2) || (match.player2_id === this.currentUserId && match.score_p2 <= match.score_p1))
-                }
-                return matches;
-            }
         },
         methods: {
             retrieveMatches() {
                 MatchService.list()
                     .then(response => {
                         this.matches = response.data;
+                        this.filteredMatches = response.data;
                     })
                     .catch(e => {
                         console.log(e);
@@ -153,7 +141,10 @@
                         this.currentUserId = response.data.pk;
                     })
                     .catch(e => {
-                        console.log(e);
+                        this.$buefy.notification.open({
+                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                            type: 'is-danger'
+                        })
                     });
             },
             selectFilter(filterType) {
@@ -163,11 +154,64 @@
                 else {
                     this.filterSelected = filterType;
                 }
+            },
+            filterMatches() {
+                if (this.filterSelected === 'none') {
+                    return this.matches;
+                }
+                let matches = []
+                matches = this.matches.filter((match) => match.player1_id === this.currentUserId || match.player2_id === this.currentUserId);
+                if (this.filterSelected === 'mine_won') {
+                    matches = matches.filter((match) => (match.player1_id === this.currentUserId && match.score_p1 >= match.score_p2) || (match.player2_id === this.currentUserId && match.score_p2 >= match.score_p1))
+                }
+                if (this.filterSelected === 'mine_lost') {
+                    matches = matches.filter((match) => (match.player1_id === this.currentUserId && match.score_p1 <= match.score_p2) || (match.player2_id === this.currentUserId && match.score_p2 <= match.score_p1))
+                }
+                this.filteredMatches = matches;
+            },
+            DeleteMatch(match) {
+                this.$buefy.modal.open({
+                    parent: this,
+                    component: ConfirmModal,
+                    hasModalCard: true,
+                    trapFocus: true,
+                    props: {
+                        'title': "Confirmation de suppression d'une partie",
+                        'message': "Êtes-vous sur de vous supprimer la partie entre " + match.player1 + " et " + match.player2 + " du " + new Date(match.date).toLocaleDateString(),
+                        callback: confirm => {
+                            if (confirm) {
+                                MatchService.delete(match.id)
+                                    .then(response => {
+                                        if (response.status === 204) {
+                                            this.$buefy.notification.open({
+                                                message: 'La partie a été supprimée !',
+                                                type: 'is-success'
+                                            })
+                                            this.refreshList();
+                                        }
+                                    })
+                                    .catch(e => {
+                                        this.$buefy.notification.open({
+                                            message: "Une erreur s'est produite ! Erreur: " + e ,
+                                            type: 'is-danger'
+                                        })
+                                    });
+                            }
+                    }}
+                })
             }
         },
         mounted() {
             this.retrieveMatches();
             this.getCurrentUser();
+        },
+        watch: {
+            filterSelected: function() {
+                this.filterMatches();
+            },
+            matches: function() {
+                this.filterMatches();
+            }
         }
     }
 </script>

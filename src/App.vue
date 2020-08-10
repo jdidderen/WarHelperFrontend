@@ -3,6 +3,7 @@
     <TopMenu/>
     <section  class="section">
       <div class="container">
+        <Breadcrumb/>
         <router-view/>
       </div>
     </section>
@@ -11,10 +12,12 @@
 
 <script>
 import TopMenu from './components/main/TopMenu.vue'
+import Breadcrumb from "@/components/main/Breadcrumb";
 
 export default {
   name: 'App',
   components: {
+    Breadcrumb,
     TopMenu,
   },
   computed: {

@@ -44,7 +44,7 @@
                     {{ props.row.description }}
                 </b-table-column>
 
-                <b-table-column field="cost" label="Cost" searchable>
+                <b-table-column field="cost" label="Coût" searchable>
                     {{ props.row.cost }}
                 </b-table-column>
             </template>
