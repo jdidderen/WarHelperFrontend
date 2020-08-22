@@ -431,8 +431,41 @@
         },
         methods: {
             addLine() {
-                this.match.line_ids.push({'player':1,'primary_score':0,'secondary1_score':0,'secondary2_score':0,'secondary3_score':0,'other_score':0,'cp_used':0,});
-                this.match.line_ids.push({'player':2,'primary_score':0,'secondary1_score':0,'secondary2_score':0,'secondary3_score':0,'other_score':0,'cp_used':0,});
+              let line1 = {'player':1,'primary_score':0,'secondary1_score':0,'secondary2_score':0,'secondary3_score':0,'other_score':0,'cp_used':0,'match_id':this.match.id}
+              let line2 = {'player':2,'primary_score':0,'secondary1_score':0,'secondary2_score':0,'secondary3_score':0,'other_score':0,'cp_used':0,'match_id':this.match.id}
+              MatchService.createLine(line1)
+                  .then(response => {
+                    console.log(response.data);
+                    this.match.line_ids.push(response.data);
+                    if (response.status === 201) {
+                      this.$buefy.notification.open({
+                        message: "Ligne ajoutée avec succès !",
+                        type: 'is-success'
+                      })
+                    }
+                  })
+                  .catch(e => {
+                    this.$buefy.notification.open({
+                      message: "Une erreur s'est produite ! Erreur: " + e ,
+                      type: 'is-danger'
+                    })
+                  });
+              MatchService.createLine(line2)
+                  .then(response => {
+                    this.match.line_ids.push(response.data);
+                    if (response.status === 201) {
+                      this.$buefy.notification.open({
+                        message: "Ligne ajoutée avec succès !",
+                        type: 'is-success'
+                      })
+                    }
+                  })
+                  .catch(e => {
+                    this.$buefy.notification.open({
+                      message: "Une erreur s'est produite ! Erreur: " + e ,
+                      type: 'is-danger'
+                    })
+                  });
             },
             retrieveMatch(id) {
                 MatchService.get(id)

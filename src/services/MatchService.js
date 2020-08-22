@@ -21,6 +21,10 @@ class MatchService {
         return http.post('/api/match/create', data)
     }
 
+    createLine(data) {
+        return http.post('/api/match/line/create', data)
+    }
+
     update(id, data) {
         return http.put('/api/match/update/' + id, data)
     }
